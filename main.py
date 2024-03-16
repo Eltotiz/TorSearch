@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# coding=utf-8
+# Author github.com/Eltotiz
+
 import requests
 from bs4 import BeautifulSoup
 from colorama import init, Fore, Style
@@ -7,6 +11,12 @@ import fade
 init()
 naranja = "\x1b[38;2;255;165;0m" 
 violeta = "\x1b[38;2;138;43;226m" 
+
+def clear():
+    if os.name == "posix":
+        os.system ("clear")
+    elif os.name == ("ce", "nt", "dos"):
+        os.system ("cls")
 
 banner = """
        *****************************************************************************
@@ -27,12 +37,12 @@ while True:
         'https': 'socks5h://127.0.0.1:9050'
     }
 
-    os.system("cls")
+    clear()
     print("Starting TORSEARCH...")
     api_url = "https://api.ipify.org?format=json"
 
     responseIP = session.get(api_url)
-    os.system("cls")
+    clear()
     faded_text = fade.purplepink(banner)
     print(faded_text)
     print(Fore.LIGHTRED_EX + "   [!] SECRET IP >", responseIP.json()['ip'] + Fore.RESET)
